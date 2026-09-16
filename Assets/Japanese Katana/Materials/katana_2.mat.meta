@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 563b7569cf6888e42945743e63267c3e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 287314
+  packageName: Japanese Katana
+  packageVersion: 1.0
+  assetPath: Assets/Japanese Katana/Materials/katana_2.mat
+  uploadId: 981882
