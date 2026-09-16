@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Samples/Reality Roost SDK/0.3.1/Required Boot Scenes/RR_Boot.unity
+    guid: 8bbc2cb2a44861942998dd1376911339
+  - enabled: 1
+    path: Assets/Samples/Reality Roost SDK/0.3.1/Required Boot Scenes/RR_Calib.unity
+    guid: a8830dedd9d12e74eaa329c5c4a1d7c7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: c8ec097298bcccc4c93c6cb21f1c9b17, type: 2}

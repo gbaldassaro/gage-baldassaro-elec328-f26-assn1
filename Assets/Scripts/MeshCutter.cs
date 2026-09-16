@@ -377,8 +377,50 @@ public class MeshCutter : MonoBehaviour
             halfTwoCutVertices[i] = this.transform.InverseTransformPoint(halfTwoCutVertices[i]);
         }
 
-        halfOne.vertices = halfOneVertices.ToArray();
-        halfOne.uv = halfOneUVs.ToArray();
+        List<Vector3> halfOneVerticesDistinct = new List<Vector3>();
+        List<Vector2> halfOneUVsDistinct = new List<Vector2>();
+        Dictionary<(Vector3, Vector2), int> halfOneLookup = new Dictionary<(Vector3, Vector2), int>();
+
+        for (int i = 0; i < halfOneVertices.Count; i++)
+        {
+            var key = (halfOneVertices[i], halfOneUVs[i]);
+            if (!halfOneLookup.TryGetValue(key, out int existingIndex))
+            {
+                existingIndex = halfOneVerticesDistinct.Count;
+                halfOneVerticesDistinct.Add(halfOneVertices[i]);
+                halfOneUVsDistinct.Add(halfOneUVs[i]);
+                halfOneLookup[key] = existingIndex;
+            }
+        }
+        for (int i = 0; i < halfOneTriangles.Count; i++)
+        {
+            var key = (halfOneVertices[halfOneTriangles[i]], halfOneUVs[halfOneTriangles[i]]);
+            halfOneTriangles[i] = halfOneLookup[key];
+        }
+
+        List<Vector3> halfTwoVerticesDistinct = new List<Vector3>();
+        List<Vector2> halfTwoUVsDistinct = new List<Vector2>();
+        Dictionary<(Vector3, Vector2), int> halfTwoLookup = new Dictionary<(Vector3, Vector2), int>();
+
+        for (int i = 0; i < halfTwoVertices.Count; i++)
+        {
+            var key = (halfTwoVertices[i], halfTwoUVs[i]);
+            if (!halfTwoLookup.TryGetValue(key, out int existingIndex))
+            {
+                existingIndex = halfTwoVerticesDistinct.Count;
+                halfTwoVerticesDistinct.Add(halfTwoVertices[i]);
+                halfTwoUVsDistinct.Add(halfTwoUVs[i]);
+                halfTwoLookup[key] = existingIndex;
+            }
+        }
+        for (int i = 0; i < halfTwoTriangles.Count; i++)
+        {
+            var key = (halfTwoVertices[halfTwoTriangles[i]], halfTwoUVs[halfTwoTriangles[i]]);
+            halfTwoTriangles[i] = halfTwoLookup[key];
+        }
+
+        halfOne.vertices = halfOneVerticesDistinct.ToArray();
+        halfOne.uv = halfOneUVsDistinct.ToArray();
         halfOne.triangles = halfOneTriangles.ToArray();
         halfOne.RecalculateNormals();
         halfOne.RecalculateBounds();
@@ -389,8 +431,8 @@ public class MeshCutter : MonoBehaviour
         halfOneCut.RecalculateNormals();
         halfOneCut.RecalculateBounds();
 
-        halfTwo.vertices = halfTwoVertices.ToArray();
-        halfTwo.uv = halfTwoUVs.ToArray();
+        halfTwo.vertices = halfTwoVerticesDistinct.ToArray();
+        halfTwo.uv = halfTwoUVsDistinct.ToArray();
         halfTwo.triangles = halfTwoTriangles.ToArray();
         halfTwo.RecalculateNormals();
         halfTwo.RecalculateBounds();
