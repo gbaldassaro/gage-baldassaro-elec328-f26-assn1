@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Sword Tip
   - Cut Plane
+  - Left Controller
+  - Right Controller
   layers:
   - Default
   - TransparentFX

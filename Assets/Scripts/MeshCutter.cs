@@ -5,8 +5,8 @@ using System.Linq;
 public class MeshCutter : MonoBehaviour
 {
 
-    public Material cutMaterial;
-    public Color cutColor;
+    [SerializeField] private Material cutMaterial;
+    [SerializeField] private Color cutColor;
 
     public void CutMesh(Plane cutPlane, Vector3 torqueVector)
     {
@@ -31,10 +31,23 @@ public class MeshCutter : MonoBehaviour
         List<Vector2> halfTwoUVs = new List<Vector2>();
         List<Vector3> halfTwoEdgeVertices  = new List<Vector3>();
 
-
+        bool anyAbove = false;
+        bool anyBelow = false;
         for (int i = 0; i < vertices.Length; i++)
         {
             aboveCutPlane[i] = cutPlane.GetSide(this.transform.TransformPoint(vertices[i]));
+            if (aboveCutPlane[i]) 
+            {
+                anyAbove = true;
+            }
+            else
+            {
+                anyBelow = true;
+            }
+        }
+        if (!(anyAbove && anyBelow))
+        {
+            return;
         }
 
         for (int i = 0; i < triangles.Length; i += 3)
@@ -443,7 +456,7 @@ public class MeshCutter : MonoBehaviour
         halfTwoCut.RecalculateNormals();
         halfTwoCut.RecalculateBounds();
 
-        GameObject halfOneObj = new GameObject(this.gameObject.name + "Half One");
+        GameObject halfOneObj = new GameObject(this.gameObject.name + " Half One");
         halfOneObj.transform.position = this.transform.position;
         halfOneObj.transform.rotation = this.transform.rotation;
         halfOneObj.transform.localScale = this.transform.localScale;
@@ -451,15 +464,11 @@ public class MeshCutter : MonoBehaviour
         halfOneObj.AddComponent<MeshRenderer>();
         halfOneObj.AddComponent<MeshCollider>();
         halfOneObj.AddComponent<Rigidbody>();
-        // halfOneObj.AddComponent<MeshCutter>();
 
         halfOneObj.GetComponent<MeshFilter>().mesh = halfOne;
         halfOneObj.GetComponent<MeshRenderer>().material = material;
         halfOneObj.GetComponent<MeshCollider>().sharedMesh = halfOne;
         halfOneObj.GetComponent<MeshCollider>().convex = true;
-        // halfOneObj.GetComponent<MeshCutter>().cutMaterial = cutMaterial;
-        // halfOneObj.GetComponent<MeshCutter>().cutColor = cutColor;
-        // halfOneObj.GetComponent<MeshCutter>().plane = plane;
 
         GameObject halfOneCutObj = new GameObject();
         halfOneCutObj.transform.SetParent(halfOneObj.transform);
@@ -468,14 +477,10 @@ public class MeshCutter : MonoBehaviour
         halfOneCutObj.transform.localScale = Vector3.one;
         halfOneCutObj.AddComponent<MeshFilter>();
         halfOneCutObj.AddComponent<MeshRenderer>();
-        // halfOneCutObj.AddComponent<MeshCutter>();
 
         halfOneCutObj.GetComponent<MeshFilter>().mesh = halfOneCut;
         halfOneCutObj.GetComponent<MeshRenderer>().material = cutMaterial;
         halfOneCutObj.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", cutColor);
-        // halfOneCutObj.GetComponent<MeshCutter>().cutMaterial = cutMaterial;
-        // halfOneCutObj.GetComponent<MeshCutter>().cutColor = cutColor;
-        // halfOneCutObj.GetComponent<MeshCutter>().plane = plane;
 
         GameObject halfTwoObj = new GameObject(this.gameObject.name + " Half Two");
         halfTwoObj.transform.position = this.transform.position;
@@ -485,15 +490,11 @@ public class MeshCutter : MonoBehaviour
         halfTwoObj.AddComponent<MeshRenderer>();
         halfTwoObj.AddComponent<MeshCollider>();
         halfTwoObj.AddComponent<Rigidbody>();
-        // halfTwoObj.AddComponent<MeshCutter>();
 
         halfTwoObj.GetComponent<MeshFilter>().mesh = halfTwo;
         halfTwoObj.GetComponent<MeshRenderer>().material = material;
         halfTwoObj.GetComponent<MeshCollider>().sharedMesh = halfTwo;
         halfTwoObj.GetComponent<MeshCollider>().convex = true;
-        // halfTwoObj.GetComponent<MeshCutter>().cutMaterial = cutMaterial;
-        // halfTwoObj.GetComponent<MeshCutter>().cutColor = cutColor;
-        // halfTwoObj.GetComponent<MeshCutter>().plane = plane;
 
         GameObject halfTwoCutObj = new GameObject();
         halfTwoCutObj.transform.SetParent(halfTwoObj.transform);
@@ -502,17 +503,16 @@ public class MeshCutter : MonoBehaviour
         halfTwoCutObj.transform.localScale = Vector3.one;
         halfTwoCutObj.AddComponent<MeshFilter>();
         halfTwoCutObj.AddComponent<MeshRenderer>();
-        // halfTwoCutObj.AddComponent<MeshCutter>();
 
         halfTwoCutObj.GetComponent<MeshFilter>().mesh = halfTwoCut;
         halfTwoCutObj.GetComponent<MeshRenderer>().material = cutMaterial;
         halfTwoCutObj.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", cutColor);
-        // halfTwoCutObj.GetComponent<MeshCutter>().cutMaterial = cutMaterial;
-        // halfTwoCutObj.GetComponent<MeshCutter>().cutColor = cutColor;
-        // halfTwoCutObj.GetComponent<MeshCutter>().plane = plane;
 
-        Destroy(gameObject);
+        gameObject.GetComponent<SpawnController>().Hide();
 
+        halfOneObj.transform.SetParent(gameObject.transform, true);
+        halfTwoObj.transform.SetParent(gameObject.transform, true);
+        
         halfOneObj.GetComponent<Rigidbody>().AddForce(cutPlane.normal * 10f);
         halfTwoObj.GetComponent<Rigidbody>().AddForce(-cutPlane.normal * 10f);
         halfOneObj.GetComponent<Rigidbody>().AddTorque(torqueVector * 10f);

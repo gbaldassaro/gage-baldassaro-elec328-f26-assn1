@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roost Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 5217626775924064437, guid: 5710497ff43d52a44a4c41d48244344c, type: 3}
+      propertyPath: m_TagString
+      value: Left Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217626777610125386, guid: 5710497ff43d52a44a4c41d48244344c, type: 3}
+      propertyPath: m_TagString
+      value: Right Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 6026392181008459389, guid: 5710497ff43d52a44a4c41d48244344c, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2793444712
