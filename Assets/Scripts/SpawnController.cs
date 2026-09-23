@@ -34,6 +34,7 @@ public class SpawnController : MonoBehaviour
         if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.isKinematic = false;
+            rb.linearVelocity = Vector3.zero;
         }
     }
 }
