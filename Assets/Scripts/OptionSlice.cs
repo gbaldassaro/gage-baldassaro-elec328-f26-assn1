@@ -9,9 +9,14 @@ public class OptionSlice : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private SpawnController[] fruits;
 
+    private bool pauseSpin;
+
     void Update()
     {
-        this.transform.rotation = Quaternion.Euler(0, Time.time * rotationSpeed, 0);    
+        if (!pauseSpin)
+        {
+            this.transform.rotation = Quaternion.Euler(0, Time.time * rotationSpeed, 0);    
+        }
     }
 
     public IEnumerator Activate()
@@ -26,7 +31,9 @@ public class OptionSlice : MonoBehaviour
             }
         }
 
+        pauseSpin = true;
         yield return new WaitForSeconds(3.0f);
+        pauseSpin = false;
         GetComponent<SpawnController>().Reset();
     }
 }

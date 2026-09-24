@@ -1217,6 +1217,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutMaterial: {fileID: 2100000, guid: f234b7de5c0c1774f9a61538784b2a2a, type: 2}
   cutColor: {r: 0.96981126, g: 0.8119882, b: 0.5032039, a: 1}
+--- !u!1 &494878819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494878820}
+  m_Layer: 0
+  m_Name: Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &494878820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494878819}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.808, z: 0.037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 414400774611910138}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &520481040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5331200591087136570, guid: 7b005356e32b0d441a113365581a9209, type: 3}
@@ -1399,6 +1430,7 @@ GameObject:
   - component: {fileID: 591516048}
   - component: {fileID: 591516047}
   - component: {fileID: 591516050}
+  - component: {fileID: 591516051}
   m_Layer: 2
   m_Name: Left Katana
   m_TagString: Untagged
@@ -1454,6 +1486,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 940179749}
+  - {fileID: 1940415335}
   - {fileID: 59884331}
   - {fileID: 825709347}
   - {fileID: 600158961}
@@ -1490,6 +1524,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &591516051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591516046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a795d91f0f48e4942956dabdbc20bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tip: {fileID: 940179749}
+  swordBase: {fileID: 1940415335}
+  material: {fileID: 2100000, guid: e05b437c3a92cfe4b8931391ae675601, type: 2}
 --- !u!1 &600158960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1795,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 261268507}
   m_SourcePrefab: {fileID: 100100000, guid: 21d21cf47585eed4ebf77ddf78fd9efd, type: 3}
+--- !u!1 &683084284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683084285}
+  m_Layer: 2
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683084285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683084284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 414400774611910138}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705893682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8591800249828786389, guid: f94e8c714d1f66548b6d56bd01245b76, type: 3}
@@ -2003,6 +2083,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840967905}
   m_Mesh: {fileID: -2081196775794527710, guid: adcbf4f3460c62845952866a02419236, type: 3}
+--- !u!1 &940179748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940179749}
+  m_Layer: 2
+  m_Name: Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &940179749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940179748}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.808, z: 0.037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 591516049}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &944698324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3751482144859723503, guid: af6f984debd3d2e48864a58235e1cf95, type: 3}
@@ -3301,6 +3412,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712fae25a817867409720818e6a814e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1940415334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1940415335}
+  m_Layer: 2
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1940415335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940415334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 591516049}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080192081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1869877058872320115, guid: 9b30b7c2b97b38a4b82566c41d343b25, type: 3}
@@ -3444,6 +3586,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 494878820}
+  - {fileID: 683084285}
   - {fileID: 1197600321}
   - {fileID: 1387923210892778329}
   - {fileID: 7350974045901027286}
@@ -3483,6 +3627,7 @@ GameObject:
   - component: {fileID: 1249031917}
   - component: {fileID: 1249031916}
   - component: {fileID: 1048195098943416129}
+  - component: {fileID: 1048195098943416130}
   m_Layer: 2
   m_Name: Right Katana
   m_TagString: Untagged
@@ -3517,6 +3662,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1048195098943416130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048195098943416128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a795d91f0f48e4942956dabdbc20bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tip: {fileID: 494878820}
+  swordBase: {fileID: 683084285}
+  material: {fileID: 2100000, guid: e05b437c3a92cfe4b8931391ae675601, type: 2}
 --- !u!33 &1237588947778890027
 MeshFilter:
   m_ObjectHideFlags: 0
