@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(SpawnController))]
 public class OptionSlice : MonoBehaviour
 {
     [SerializeField] private bool reset;
@@ -16,7 +17,7 @@ public class OptionSlice : MonoBehaviour
     public IEnumerator Activate()
     {
         StopCoroutine(Activate());
-        
+
         if (reset)
         {
             foreach (SpawnController fruit in fruits)
@@ -26,6 +27,6 @@ public class OptionSlice : MonoBehaviour
         }
 
         yield return new WaitForSeconds(3.0f);
-        gameObject.GetComponent<SpawnController>().Reset();
+        GetComponent<SpawnController>().Reset();
     }
 }

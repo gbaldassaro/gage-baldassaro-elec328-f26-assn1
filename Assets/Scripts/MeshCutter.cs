@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(SpawnController))]
 public class MeshCutter : MonoBehaviour
 {
 
@@ -464,6 +467,8 @@ public class MeshCutter : MonoBehaviour
         halfOneObj.AddComponent<MeshRenderer>();
         halfOneObj.AddComponent<MeshCollider>();
         halfOneObj.AddComponent<Rigidbody>();
+        halfOneObj.AddComponent<Ripple>();
+        halfOneObj.AddComponent<SpawnController>();
 
         halfOneObj.GetComponent<MeshFilter>().mesh = halfOne;
         halfOneObj.GetComponent<MeshRenderer>().material = material;
@@ -477,6 +482,8 @@ public class MeshCutter : MonoBehaviour
         halfOneCutObj.transform.localScale = Vector3.one;
         halfOneCutObj.AddComponent<MeshFilter>();
         halfOneCutObj.AddComponent<MeshRenderer>();
+        halfOneCutObj.AddComponent<Ripple>();
+        halfOneCutObj.AddComponent<SpawnController>();
 
         halfOneCutObj.GetComponent<MeshFilter>().mesh = halfOneCut;
         halfOneCutObj.GetComponent<MeshRenderer>().material = cutMaterial;
@@ -490,6 +497,8 @@ public class MeshCutter : MonoBehaviour
         halfTwoObj.AddComponent<MeshRenderer>();
         halfTwoObj.AddComponent<MeshCollider>();
         halfTwoObj.AddComponent<Rigidbody>();
+        halfTwoObj.AddComponent<Ripple>();
+        halfTwoObj.AddComponent<SpawnController>();
 
         halfTwoObj.GetComponent<MeshFilter>().mesh = halfTwo;
         halfTwoObj.GetComponent<MeshRenderer>().material = material;
@@ -503,12 +512,14 @@ public class MeshCutter : MonoBehaviour
         halfTwoCutObj.transform.localScale = Vector3.one;
         halfTwoCutObj.AddComponent<MeshFilter>();
         halfTwoCutObj.AddComponent<MeshRenderer>();
+        halfTwoCutObj.AddComponent<Ripple>();
+        halfTwoCutObj.AddComponent<SpawnController>();
 
         halfTwoCutObj.GetComponent<MeshFilter>().mesh = halfTwoCut;
         halfTwoCutObj.GetComponent<MeshRenderer>().material = cutMaterial;
         halfTwoCutObj.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", cutColor);
 
-        gameObject.GetComponent<SpawnController>().Hide();
+        GetComponent<SpawnController>().Hide();
 
         halfOneObj.transform.SetParent(gameObject.transform, true);
         halfTwoObj.transform.SetParent(gameObject.transform, true);

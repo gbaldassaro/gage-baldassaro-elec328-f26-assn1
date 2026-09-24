@@ -34,11 +34,11 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<MeshCutter>(out MeshCutter meshCutter))
+        if (other.TryGetComponent<MeshCutter>(out MeshCutter meshCutter))
         {
             meshCutter.CutMesh(new Plane(cutPlane.up, cutPlane.position), cutPlane.forward);
 
-            if (other.gameObject.TryGetComponent<OptionSlice>(out OptionSlice optionSlice))
+            if (other.TryGetComponent<OptionSlice>(out OptionSlice optionSlice))
             {
                 StartCoroutine(optionSlice.Activate());
             }

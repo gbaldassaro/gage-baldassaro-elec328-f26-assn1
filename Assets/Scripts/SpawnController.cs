@@ -16,7 +16,7 @@ public class SpawnController : MonoBehaviour
     public void Hide()
     {
         this.transform.position = new Vector3(0, -100, 0);
-        if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.isKinematic = true;
         }
@@ -31,7 +31,7 @@ public class SpawnController : MonoBehaviour
         
         this.transform.SetPositionAndRotation(originalPosition, originalRotation);
         this.transform.localScale = originalScale;
-        if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
